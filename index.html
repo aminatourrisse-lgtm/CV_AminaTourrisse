@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AR Resume Experience</title>
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* حاوية المجسم */
+        model-viewer {
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff; /* لون الخلفية قبل ما تحل الكاميرا */
+            --poster-color: transparent;
+        }
+
+        /* بوطون الدخول للواقع المعزز (كيبان الفوق) */
+        #ar-button {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #dadce0;
+            padding: 10px 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: #4285f4;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* بوطون الرابط (كيبان لتحت) */
+        .link-button {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .link-button:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* تعليمات للمستخدم */
+        .instructions {
+            position: absolute;
+            top: 80px;
+            width: 100%;
+            text-align: center;
+            color: #666;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <model-viewer 
+        src="react.glb" 
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        ar-placement="floor" 
+        shadow-intensity="1.5" 
+        exposure="1"
+        autoplay
+        touch-action="pan-y">
+        
+        <button slot="ar-button" id="ar-button">
+            👋 اكتشفني في واقعك المعزز     kji
+        </button>
+
+        <div class="instructions">حرك الهاتف لرؤية المجسم في غرفتك</div>
+
+        <a href="https://linkedin.com/in/yourprofile" class="link-button" target="_blank">
+            زور الملف الشخصي ديالي 🚀
+        </a>
+
+    </model-viewer>
+
+    <script>
+        // كود بسيط للتأكد من أن AR مدعوم
+        console.log("AR Resume Site Loaded Successfully");
+    </script>
+</body>
+</html>
